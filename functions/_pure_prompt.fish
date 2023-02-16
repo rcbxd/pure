@@ -6,7 +6,13 @@ function _pure_prompt \
     set --local virtualenv (_pure_prompt_virtualenv) # Python virtualenv name
     set --local vimode_indicator (_pure_prompt_vimode) # vi-mode indicator
     set --local pure_symbol (_pure_prompt_symbol $exit_code)
-    set --local system_time (_pure_prompt_system_time)
+
+    set --local system_time ''
+
+    if set --query pure_show_system_time_pos; and test "$pure_show_system_time_pos" = 'left'
+      set system_time (_pure_prompt_system_time)
+    end
+
     set --local root_prefix (_pure_prefix_root_prompt)
     set --local space
 
